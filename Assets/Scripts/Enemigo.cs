@@ -16,11 +16,17 @@ public class Enemigo : MonoBehaviour
 
     private void Start()
     {
-        patrulla.enabled = true;
+        ActivarPatrulla();
     }
-    internal void ActivaCombate(Transform target)
+    public void ActivaCombate(Transform target)
     {
         mainTarget = target;
         combate.enabled = true;
+    }
+
+    public void ActivarPatrulla()
+    {
+        Combate.enabled = false;
+        patrulla.enabled = true;
     }
 }

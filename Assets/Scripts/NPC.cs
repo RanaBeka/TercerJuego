@@ -20,8 +20,8 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     public void Interactuar(Transform interactuador)
     {
-        //transform.DOLookAt(interactuador.position, tiempoRotacion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogo.sistema.IniciarDialogo(dialogo, cameraPoint));
-        //SistemaDeDialogo.sistema.IniciarDialogo();
+        transform.DOLookAt(interactuador.position, tiempoRotacion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogo.sistema.IniciarDialogo(dialogo, cameraPoint));
+        SistemaDeDialogo.sistema.IniciarDialogo(dialogo, cameraPoint);
     }
 
     private void OnMouseEnter()

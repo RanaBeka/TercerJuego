@@ -11,6 +11,9 @@ public class SistemaPatrulla : MonoBehaviour
 
     [SerializeField] private NavMeshAgent agent;
 
+    [SerializeField] private float VelocidadPatrulla;
+
+
     List<Vector3> listadoPuntos = new List<Vector3>();
 
     private Vector3 destinoActual;
@@ -32,12 +35,17 @@ public class SistemaPatrulla : MonoBehaviour
     void Start()
     {
         
-        StartCoroutine(PatrullarYEsperar());
+        
 
 
     }
 
-
+    private void OnEnable()
+    {
+        indiceRutaActual = -1;
+        agent.speed = VelocidadPatrulla;
+        StartCoroutine(PatrullarYEsperar());
+    }
     private IEnumerator PatrullarYEsperar()
     {
         while (true)

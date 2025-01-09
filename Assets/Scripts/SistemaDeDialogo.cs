@@ -8,11 +8,13 @@ public class SistemaDeDialogo : MonoBehaviour
 
     public static SistemaDeDialogo sistema;
     [SerializeField] private GameObject marcos;
-    [SerializeField] private TMP_Text textoDialogo;
+    [SerializeField] private TMP_Text textodialogo;
     private bool escribiendo; //determina si el sistema esta escribiendo o no
     private int indiceFraseActual; //Marca la frase por la q voy
     [SerializeField] private Transform npcCamera;
-
+    private DialogoSO dialogoactual;
+    
+    
     private void Awake()
     {
         if (sistema == null)
@@ -39,36 +41,69 @@ public class SistemaDeDialogo : MonoBehaviour
 
     }
 
-    public void IniciarDialogo(DialogoSO dialogo)
+    public void IniciarDialogo(DialogoSO dialogo, Transform cameraPoint)
     {
         Time.timeScale = 0f;
 
-        //npcCamera.transform.SetPositionAndRotation(cameraPoint.transform.position, cameraPoint.rotation);
-        //dialogoActual = dialogo;
+        npcCamera.transform.SetPositionAndRotation(cameraPoint.transform.position, cameraPoint.rotation);
+        dialogoactual = dialogo;
         marcos.SetActive(true);
-        //StartCoroutine(EscribirFrase());
+        StartCoroutine(escribirfrase());
     }
 
-    //private IEnumerator EscribirFrase()
-    //{
-        //escribiendo = true;
+    private IEnumerator escribirfrase()
+    {
+        escribiendo = true;
 
-        //textoDialogo.text = "";
-        //char[] fraseEnLetras = dialogoActual.frases[indiceFraseActual].ToCharArray;
-        //foreach (char letra in fraseEnLetras)
-        //{
-            //textoDialogo.text += letra;
-           // yield return new WaitForSecondsRealtime(dialogoActual.tiempoEntreLetras);
-        //}
-        //escribiendo = false;
-    //}
+        textodialogo.text = "";
+        char[] fraseenletras = dialogoactual.frases[indiceFraseActual].ToCharArray();
+        foreach (char letra in fraseenletras)
+        {
+            textodialogo.text += letra;
+            yield return new WaitForSecondsRealtime(dialogoactual.tiempoEntreLetras);
+        }
+        escribiendo = false;
+    }
 
-    private void SiguienteFrase()
+    public void SiguienteFrase()
     {
 
+        if (escribiendo)
+        {
+            CompletarFrase();
+
+        }
+        else
+        {
+            indiceFraseActual++;
+            if (indiceFraseActual < dialogoactual.frases.Length)
+            {
+
+                StartCoroutine(escribirfrase());
+
+            }
+            else
+            {
+                TerminarDialogo();
+            }
+        }
+
+
+    }
+    public void CompletarFrase()
+    {
+        StopAllCoroutines();
+        textodialogo.text = dialogoactual.frases[indiceFraseActual];
+        escribiendo = false;
     }
     private void TerminarDialogo()
     {
 
+        marcos.SetActive(false);
+        StopAllCoroutines();
+        indiceFraseActual = 0;
+        escribiendo = false;
+        dialogoactual = null;
+        Time.timeScale = 1f;
     }
 }
