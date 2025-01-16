@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Pipes;
@@ -49,14 +50,15 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (ultimoClick && ultimoClick.TryGetComponent(out NPC npc))
+        if (ultimoClick && ultimoClick.TryGetComponent(out IInteractuable interactuable))
         {
             agent.stoppingDistance = distanciaInteraccion;
 
             if(!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
-                transform.DOLookAt(npc.transform.position, tiempoRotacion, AxisConstraint.Y).OnComplete( () => LanzarInteraccion(npc));
-                
+                //transform.DOLookAt(npc.transform.position, tiempoRotacion, AxisConstraint.Y).OnComplete( () => LanzarInteraccion(npc));
+
+                LanzarInteraccion(interactuable);
             }
         }
         else if (ultimoClick)
@@ -66,10 +68,12 @@ public class Player : MonoBehaviour
         
     }
 
-    private void LanzarInteraccion(NPC npc)
+    
+
+    private void LanzarInteraccion(IInteractuable interactuable)
     {
         
-        npc.Interactuar(this.transform);
+        interactuable.Interactuar(transform);
         ultimoClick = null;
     }
 
@@ -103,5 +107,10 @@ public class Player : MonoBehaviour
     {
         Cursor.SetCursor(cursorPorDefecto, Vector2.zero, CursorMode.Auto);
         outline.enabled = false;
+    }
+
+    public void HacerDanho(float danhoataque)
+    {
+        Debug.Log("HERMANOOOOO" + danhoataque);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cofre : MonoBehaviour
+public class Cofre : MonoBehaviour, IInteractuable
 {
     private Outline outline;
 
@@ -11,6 +11,15 @@ public class Cofre : MonoBehaviour
     private void Awake()
     {
         outline = GetComponent<Outline>();
+    }
+    public void Interactuar()
+    {
+
+    }
+
+    public void Interactuar(Transform interactuador)
+    {
+
     }
     // Start is called before the first frame update
     void Start()
