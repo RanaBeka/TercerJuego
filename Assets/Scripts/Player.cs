@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Transform ultimoClick;
     [SerializeField] private float tiempoRotacion;
     private NPC npcActual;
+    private PlayerAnimations playerAnimations;
 
     [SerializeField] private float distanciaInteraccion;
     private void Awake()
