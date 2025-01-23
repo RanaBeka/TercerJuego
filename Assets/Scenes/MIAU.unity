@@ -264,7 +264,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n  Hello there you bitch, lets get going 7u7"
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8a69bf06c08192479905049b214d53e, type: 2}
   m_sharedMaterial: {fileID: -1850065393282465493, guid: f8a69bf06c08192479905049b214d53e,
@@ -5997,7 +5999,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26494047, y: 0.36661062, z: -0.10974194, w: 0.8850762}
-  m_LocalPosition: {x: -41.23, y: 38.2, z: -41.15}
+  m_LocalPosition: {x: -41.23, y: 38.2, z: -54.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9573,7 +9575,7 @@ Transform:
   m_GameObject: {fileID: 509770620}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26494044, y: 0.36661062, z: -0.109741926, w: 0.8850762}
-  m_LocalPosition: {x: -41.23, y: 38.2, z: -41.15}
+  m_LocalPosition: {x: -41.23, y: 38.2, z: -54.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14143,6 +14145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765602171}
+  - component: {fileID: 765602172}
   m_Layer: 0
   m_Name: SistemaDeDialogo
   m_TagString: Untagged
@@ -14168,6 +14171,22 @@ Transform:
   - {fileID: 1037696289}
   m_Father: {fileID: 1987508020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &765602172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765602170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49dd788385e445429e463e917f88ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventManager: {fileID: 0}
+  marcos: {fileID: 0}
+  textodialogo: {fileID: 0}
+  npcCamera: {fileID: 0}
 --- !u!1001 &765902897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15175,7 +15194,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ce055cfa837ead84e928a795f1751502,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.765
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce055cfa837ead84e928a795f1751502,
         type: 3}
@@ -15217,11 +15236,47 @@ PrefabInstance:
       propertyPath: m_Name
       value: PC_Nightmare_Mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 7948832715747948136, guid: ce055cfa837ead84e928a795f1751502,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c475f99b9608ca1419d93fafc2e0d077, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ce055cfa837ead84e928a795f1751502,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 857679835}
   m_SourcePrefab: {fileID: 100100000, guid: ce055cfa837ead84e928a795f1751502, type: 3}
+--- !u!1 &857679834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ce055cfa837ead84e928a795f1751502,
+    type: 3}
+  m_PrefabInstance: {fileID: 857679833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &857679835
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857679834}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27538bbb94dd0f949b1e18418f4c82c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &858653635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17366,6 +17421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037696289}
+  - component: {fileID: 1037696290}
   m_Layer: 5
   m_Name: SistemaMisiones
   m_TagString: Untagged
@@ -17393,6 +17449,20 @@ RectTransform:
   m_AnchoredPosition: {x: 164.57309, y: 353.67368}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1037696290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037696288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c60430efaba9434eb42fcb16d19e205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventManager: {fileID: 0}
+  toggleMision: {fileID: 0}
 --- !u!1001 &1043409743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25198,7 +25268,7 @@ Transform:
   m_GameObject: {fileID: 1553747139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.23, y: 1, z: -1.15}
+  m_LocalPosition: {x: -1.23, y: 1, z: -14.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

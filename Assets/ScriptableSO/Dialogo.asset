@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8343c232404ed4bb50b12cb22de4a2, type: 3}
   m_Name: Dialogo
   m_EditorClassIdentifier: 
-  frases: []
-  tiempoEntreLetras: 0
+  frases:
+  - A ver tata, que necesito hongos alucinogenos para relajarme un rato.
+  - "Est\xE1n por ah\xED pero voy muy emporrado como para verlas, me ayudas? Gracias
+    guapa"
+  frasesClip: []
+  tiempoEntreLetras: 0.01
+  tieneMision: 1
+  textoMision: Consigue los hongos 0/3

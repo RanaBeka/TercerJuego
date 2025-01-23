@@ -7,18 +7,10 @@ public class DialogoSO : ScriptableObject
 {
     [TextArea]
     public string[] frases;
+    public AudioClip[] frasesClip;
     public float tiempoEntreLetras;
-
+    public bool tieneMision;
+    public string textoMision;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
