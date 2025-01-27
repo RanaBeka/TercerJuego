@@ -8,7 +8,7 @@ public class SistemaMisiones : MonoBehaviour
     private EventManagerSO eventManager;
 
     [SerializeField]
-    private GameObject toggleMision;
+    private ToggleMision[] toggleMision;
 
 
     private void OnEnable()
@@ -16,8 +16,16 @@ public class SistemaMisiones : MonoBehaviour
         eventManager.OnNuevaMision += ActivarToggleMision;
     }
 
-    private void ActivarToggleMision()
+    private void ActivarToggleMision(MisionSO mision)
     {
-        toggleMision.SetActive(true);
+        toggleMision[mision.indiceMision].TextoMision.text = mision.ordenInicial;
+
+        if(mision.repetir)
+        {
+            toggleMision[mision.indiceMision].TextoMision.text += "(" + mision.estadoActual + "/" + mision.repeticionesTotales + ")";
+        }
+
+        toggleMision[mision.indiceMision].gameObject.SetActive(true);
     }
+    
 }

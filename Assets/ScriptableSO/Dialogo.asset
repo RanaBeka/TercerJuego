@@ -19,4 +19,4 @@ MonoBehaviour:
   frasesClip: []
   tiempoEntreLetras: 0.01
   tieneMision: 1
-  textoMision: Consigue los hongos 0/3
+  mision: {fileID: 11400000, guid: 0a2e25cacfa22834c945cd0f3377dfde, type: 2}

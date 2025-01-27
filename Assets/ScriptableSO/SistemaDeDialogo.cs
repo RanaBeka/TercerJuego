@@ -107,7 +107,7 @@ public class SistemaDeDialogo : MonoBehaviour
 
         if(dialogoactual.tieneMision)
         {
-            eventManager.NuevaMision();
+            eventManager.NuevaMision(dialogoactual.mision);
         }
 
         dialogoactual = null;
