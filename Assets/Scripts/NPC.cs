@@ -5,23 +5,57 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractuable
 {
+    [SerializeField]
+    private EventManagerSO eventManager;
+
+    [SerializeField]
+    private MisionSO misionAsociada;
+
+    [SerializeField] 
+    private DialogoSO dialogo1;
+
+    [SerializeField] 
+    private DialogoSO dialogo2;
+
+    [SerializeField] 
+    private Transform cameraPoint;
+
+    [SerializeField] 
+    private float tiempoRotacion;
+
+
     private Outline outline;
-    [SerializeField] private DialogoSO dialogo;
+
     private Texture2D cursorInteraccion;
+
     private Texture2D cursorPorDefecto;
 
-    [SerializeField] private Transform cameraPoint;
-
-    [SerializeField] private float tiempoRotacion;
+    private DialogoSO dialogoActual;
     private void Awake()
     {
         outline = GetComponent<Outline>();
+        dialogoActual = dialogo1;
+
     }
+
+    private void OnEnable()
+    {
+        eventManager.OnTerminarMision += CambiarDialogo;
+    }
+
+    private void CambiarDialogo(MisionSO misionTerminada)
+    {
+        if (misionTerminada== misionAsociada)
+        {
+            dialogoActual = dialogo2;
+        }
+    }
+
     // Start is called before the first frame update
     public void Interactuar(Transform interactuador)
     {
-        transform.DOLookAt(interactuador.position, tiempoRotacion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogo.sistema.IniciarDialogo(dialogo, cameraPoint));
-        SistemaDeDialogo.sistema.IniciarDialogo(dialogo, cameraPoint);
+        transform.DOLookAt(interactuador.position, tiempoRotacion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogo.sistema.IniciarDialogo(dialogoActual, cameraPoint));
+        
     }
 
     private void OnMouseEnter()

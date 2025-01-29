@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Mision 0
   m_EditorClassIdentifier: 
   ordenInicial: Recoge hongos alucinogenos
-  ordenFinal: Vuelvo con el camello y daselos
+  ordenFinal: Vuelve con el camello y daselos
   repetir: 1
   repeticionesTotales: 3
-  estadoActual: 0
   indiceMision: 0

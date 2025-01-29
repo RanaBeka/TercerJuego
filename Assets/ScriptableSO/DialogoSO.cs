@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dialogo")] 
+
 public class DialogoSO : ScriptableObject
 {
     [TextArea]
