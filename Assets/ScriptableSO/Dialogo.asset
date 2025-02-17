@@ -16,7 +16,10 @@ MonoBehaviour:
   - A ver tata, que necesito hongos alucinogenos para relajarme un rato.
   - "Est\xE1n por ah\xED pero voy muy emporrado como para verlas, me ayudas? Gracias
     guapa"
+  - 'Por cierto, ten cuidado con fentaniloman
+
+'
   frasesClip: []
-  tiempoEntreLetras: 0.01
+  tiempoEntreLetras: 0.1
   tieneMision: 1
   mision: {fileID: 11400000, guid: 0a2e25cacfa22834c945cd0f3377dfde, type: 2}

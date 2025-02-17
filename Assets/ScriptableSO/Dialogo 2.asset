@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccfa6613629a23d479ce22c103c66396, type: 3}
-  m_Name: Mision 1
+  m_Script: {fileID: 11500000, guid: bb8343c232404ed4bb50b12cb22de4a2, type: 3}
+  m_Name: Dialogo 2
   m_EditorClassIdentifier: 
-  ordenInicial: Recoge hongos alucinogenos
-  ordenFinal: Vuelvo con el camello y daselos
-  repetir: 1
-  repeticionesTotales: 3
-  estadoActual: 0
-  indiceMision: 0
+  frases:
+  - "Gracias reina, me voy a crearle un evento can\xF3nico a una ni\xF1a de 13 a\xF1os"
+  frasesClip: []
+  tiempoEntreLetras: 0.1
+  tieneMision: 0
+  mision: {fileID: 0}

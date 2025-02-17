@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour, IInteractuable
 {
@@ -15,7 +16,7 @@ public class NPC : MonoBehaviour, IInteractuable
     private DialogoSO dialogo1;
 
     [SerializeField] 
-    private DialogoSO dialogo2;
+    public DialogoSO dialogo2;
 
     [SerializeField] 
     private Transform cameraPoint;
@@ -23,6 +24,8 @@ public class NPC : MonoBehaviour, IInteractuable
     [SerializeField] 
     private float tiempoRotacion;
 
+    [SerializeField]
+    private SistemaDeDialogo sD;
 
     private Outline outline;
 
@@ -30,7 +33,11 @@ public class NPC : MonoBehaviour, IInteractuable
 
     private Texture2D cursorPorDefecto;
 
-    private DialogoSO dialogoActual;
+    public DialogoSO dialogoActual;
+
+    public DialogoSO DialogoActual { get => dialogoActual; set => dialogoActual = value; }
+    public DialogoSO Dialogo2 { get => dialogo2; set => dialogo2 = value; }
+
     private void Awake()
     {
         outline = GetComponent<Outline>();
@@ -48,6 +55,9 @@ public class NPC : MonoBehaviour, IInteractuable
         if (misionTerminada== misionAsociada)
         {
             dialogoActual = dialogo2;
+
+
+            
         }
     }
 
@@ -55,7 +65,7 @@ public class NPC : MonoBehaviour, IInteractuable
     public void Interactuar(Transform interactuador)
     {
         transform.DOLookAt(interactuador.position, tiempoRotacion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogo.sistema.IniciarDialogo(dialogoActual, cameraPoint));
-        
+       
     }
 
     private void OnMouseEnter()

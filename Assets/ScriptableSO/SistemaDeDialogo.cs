@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SistemaDeDialogo : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SistemaDeDialogo : MonoBehaviour
     private int indiceFraseActual; //Marca la frase por la q voy
     [SerializeField] private Transform npcCamera;
     private DialogoSO dialogoactual;
+    [SerializeField] NPC npc;
     
     
     private void Awake()
@@ -49,6 +51,7 @@ public class SistemaDeDialogo : MonoBehaviour
         dialogoactual = dialogo;
         marcos.SetActive(true);
         StartCoroutine(escribirfrase());
+        
     }
 
     private IEnumerator escribirfrase()
@@ -85,6 +88,7 @@ public class SistemaDeDialogo : MonoBehaviour
             else
             {
                 TerminarDialogo();
+                
             }
         }
 
@@ -98,7 +102,7 @@ public class SistemaDeDialogo : MonoBehaviour
     }
     private void TerminarDialogo()
     {
-
+        
         marcos.SetActive(false);
         StopAllCoroutines();
         indiceFraseActual = 0;
@@ -108,6 +112,10 @@ public class SistemaDeDialogo : MonoBehaviour
         if(dialogoactual.tieneMision)
         {
             eventManager.NuevaMision(dialogoactual.mision);
+        }
+        if (npc.dialogoActual == npc.dialogo2)
+        {
+            SceneManager.LoadScene(1);
         }
 
         dialogoactual = null;

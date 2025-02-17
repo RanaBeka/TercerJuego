@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class SistemaMisiones : MonoBehaviour
@@ -15,6 +16,8 @@ public class SistemaMisiones : MonoBehaviour
     {
         eventManager.OnNuevaMision += ActivarToggleMision;
         eventManager.OnActualizarMision += ActualizarToggle;
+        eventManager.OnTerminarMision += CerrarToggle;
+
     }
 
     private void ActivarToggleMision(MisionSO mision)
@@ -38,5 +41,6 @@ public class SistemaMisiones : MonoBehaviour
     {
         toggleMision[mision.indiceMision].Toggle.isOn = true;
         toggleMision[mision.indiceMision].TextoMision.text = mision.ordenFinal;
+        
     }
 }

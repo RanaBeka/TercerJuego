@@ -14,6 +14,7 @@ public class Seta : MonoBehaviour, IInteractuable
 
     public void Interactuar(Transform interactuador)
     {
+        Debug.Log("seguimos aqui");
         misionAsociada.estadoActual++;
         if (misionAsociada.estadoActual < misionAsociada.repeticionesTotales)
         {
