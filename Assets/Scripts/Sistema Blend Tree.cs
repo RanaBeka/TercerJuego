@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class PlayerVisual : MonoBehaviour
+public class SistemaBlendTree : MonoBehaviour
 {
-    
+
     private Animator anim;
+    [SerializeField] NavMeshAgent agent;
 
     private void Awake()
     {
@@ -20,14 +22,6 @@ public class PlayerVisual : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public void EjecutarAtaque()
-    {
-        anim.SetBool("attacking", true);
-    }
-    public void PararAtaque()
-    {
-        anim.SetBool("attacking", false);
+        anim.SetFloat("velocity", agent.velocity.magnitude/agent.speed);
     }
 }

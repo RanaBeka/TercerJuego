@@ -13,6 +13,7 @@ public class SistemaCombate : MonoBehaviour
     [SerializeField] private float danhoataque;
     [SerializeField] private float distancia;
     [SerializeField] private NavMeshAgent agent;
+    
 
     [SerializeField] private Animator anim;
     private Transform target;
@@ -20,8 +21,7 @@ public class SistemaCombate : MonoBehaviour
     private void Awake()
     {
         main.Combate = this;
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        
     }
     private void OnEnable()
     {
@@ -32,19 +32,22 @@ public class SistemaCombate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(main.MainTarget && agent.CalculatePath(main.MainTarget.position,new NavMeshPath()))
+
+        if(main.MainTarget!= null && agent.CalculatePath(main.MainTarget.position,new NavMeshPath()))
         {
             EnfocarObjetivo();
             agent.SetDestination(main.MainTarget.position);
 
-            if(agent.pathPending && agent.stoppingDistance>=distancia)
+            if(!agent.pathPending && agent.remainingDistance<=distancia)
             {
                 anim.SetBool("Attack", true);
             }
         }
         else
         {
+
             main.ActivarPatrulla();
+            this.enabled = false;
         }
         
         
@@ -69,8 +72,5 @@ public class SistemaCombate : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
+    
 }

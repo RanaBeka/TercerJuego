@@ -45,7 +45,7 @@ public class SistemaDeDialogo : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        npcCamera.transform.SetPositionAndRotation(cameraPoint.transform.position, cameraPoint.rotation);
+        npcCamera.SetPositionAndRotation(cameraPoint.position, cameraPoint.rotation);
         dialogoactual = dialogo;
         marcos.SetActive(true);
         StartCoroutine(escribirfrase());

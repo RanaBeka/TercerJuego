@@ -12,7 +12,7 @@ public class Enemigo : MonoBehaviour
     private Transform mainTarget;
     public SistemaPatrulla Patrulla { get => patrulla; set => patrulla = value; }
     public SistemaCombate Combate { get => combate; set => combate = value; }
-    public Transform MainTarget { get => mainTarget; set => mainTarget = value; }
+    public Transform MainTarget { get => mainTarget;  }
 
     private void Start()
     {
@@ -20,13 +20,14 @@ public class Enemigo : MonoBehaviour
     }
     public void ActivaCombate(Transform target)
     {
+        Debug.Log("b");
         mainTarget = target;
         combate.enabled = true;
     }
 
     public void ActivarPatrulla()
     {
-        Combate.enabled = false;
+        Debug.Log("c");
         patrulla.enabled = true;
     }
 }

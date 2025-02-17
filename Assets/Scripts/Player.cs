@@ -88,14 +88,10 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             if (Input.GetMouseButtonDown(0))
-            {
-                if (hit.transform.TryGetComponent(out NPC npc))
-                {
-                    npcActual = npc;
-                    agent.stoppingDistance = distanciaInteraccion;
-                }
-
-                agent.SetDestination(hit.point);
+            {              
+                                              
+                           agent.SetDestination(hit.point);
+                ultimoClick = hit.transform;    
             }
         }
     }

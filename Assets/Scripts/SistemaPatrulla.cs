@@ -13,12 +13,13 @@ public class SistemaPatrulla : MonoBehaviour
 
     [SerializeField] private float VelocidadPatrulla;
 
+    [SerializeField] private float distanciaPatrulla;
 
     List<Vector3> listadoPuntos = new List<Vector3>();
 
     private Vector3 destinoActual;
-    private int indiceRutaActual;
-    private float tiempoEntrePuntos;
+    private int indiceRutaActual = -1;
+    //private float tiempoEntrePuntos;
 
     // Start is called before the first frame update
 
@@ -30,7 +31,7 @@ public class SistemaPatrulla : MonoBehaviour
         {
             listadoPuntos.Add(punto.position);
         }
-        CalcularDestino();
+        
     }
     void Start()
     {
@@ -42,9 +43,9 @@ public class SistemaPatrulla : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        indiceRutaActual = -1;
         agent.speed = VelocidadPatrulla;
-        agent.stoppingDistance = 0;
+        agent.stoppingDistance = distanciaPatrulla;
         StartCoroutine(PatrullarYEsperar());
     }
     private IEnumerator PatrullarYEsperar()
@@ -70,16 +71,18 @@ public class SistemaPatrulla : MonoBehaviour
             indiceRutaActual = 0;
         }
 
-        destinoActual = listadoPuntos[0];
+        destinoActual = listadoPuntos[indiceRutaActual];
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
+            Debug.Log("a");
+            StopAllCoroutines();
             main.ActivaCombate(other.transform);
             this.enabled = false;
-            StopAllCoroutines();
+            
             
         }
     }
